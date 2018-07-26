@@ -1,0 +1,14 @@
+1.修改darknet/examples/detector.c中validate_detector()
+
+char *valid_images = option_find_str(options, "valid", "./data/2007_test.txt");//改成自己的测试文件路径
+
+if(!outfile) outfile = "comp4_det_test_";
+        fps = calloc(classes, sizeof(FILE *));
+        for(j = 0; j < classes; ++j){
+            snprintf(buff, 1024, "%s/%s.txt", prefix, names[j]);//删除outfile参数以及对应的%s
+            fps[j] = fopen(buff, "w");
+
+2.darknet文件夹下运行./darknet detector valid cfg/voc.data cfg/yolov3-tiny.cfg backup/yolov3-tiny_164000.weights（改为自己的模型路径）
+
+3.在本文件夹下运行compute_mAP.py
+
